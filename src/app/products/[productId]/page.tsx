@@ -16,7 +16,11 @@ const ProductDetails = ({ params }: Props) => {
   return (
     <div>
       {`ProductDetails ${params?.productId}`}
-      <Link href={`/products/${params?.productId}/reviews`}>click</Link>
+      <Link
+        href={`/products/${params?.productId}/reviews/${params?.productId}`}
+      >
+        click
+      </Link>
     </div>
   );
 };
