@@ -1,35 +1,22 @@
-"use client";
-
 import React, { useEffect } from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 
-interface Paramprops {
+type Props = {
   params: {
     productId: number;
-
-    productDetails: {
-      id: number;
-      name: string;
-      reviews?: {
-        reviewId: number;
-        review: string;
-      }[];
-    };
   };
-}
+};
 
-const ProductDetails = ({ params }: Paramprops) => {
-  useEffect(() => {
-    console.log(params);
-  }, []);
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return { title: `product ${params?.productId}` };
+};
+
+const ProductDetails = ({ params }: Props) => {
   return (
     <div>
       {`ProductDetails ${params?.productId}`}
-      <Link
-        href={`/products/${params?.productId}/reviews/${params?.productId}`}
-      >
-        click
-      </Link>
+      <Link href={`/products/${params?.productId}/reviews`}>click</Link>
     </div>
   );
 };
